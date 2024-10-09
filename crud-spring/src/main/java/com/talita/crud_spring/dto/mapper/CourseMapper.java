@@ -1,4 +1,4 @@
-package com.talita.crud_spring.dto.mappper;
+package com.talita.crud_spring.dto.mapper;
 
 import com.talita.crud_spring.dto.CourseDTO;
 import com.talita.crud_spring.enums.Category;
