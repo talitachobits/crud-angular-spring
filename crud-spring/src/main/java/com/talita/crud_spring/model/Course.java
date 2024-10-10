@@ -12,6 +12,9 @@ import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @SQLRestriction("status <> 'Inativo'")
 @SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
@@ -21,7 +24,6 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("_id")
     private Long id;
-
 
     @NotBlank
     @NotNull
@@ -38,6 +40,9 @@ public class Course {
     @Column(length = 10, nullable = false)
     @Convert(converter = StatusCoverter.class)
     private Status status = Status.ACTIVE;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course")
+    private List<Lesson> lessons = new ArrayList<>();
 
 
     public Category getCategory() {
@@ -70,5 +75,13 @@ public class Course {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

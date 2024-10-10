@@ -1,10 +1,12 @@
+import { Lesson } from './../../model/lesson';
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CoursesService } from '../../services/courses.service';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from '../../model/course';
+import { FormUtilsService } from '../../../shared/form/form-utils.service';
 
 @Component({
   selector: 'app-course-form',
@@ -13,58 +15,79 @@ import { Course } from '../../model/course';
 })
 export class CourseFormComponent {
 
-  form: FormGroup;
+  form!: FormGroup;
 
-  constructor(private formBuilder: NonNullableFormBuilder,
+  constructor(
+    private formBuilder: NonNullableFormBuilder,
     private courseService: CoursesService,
     private snackBar: MatSnackBar,
     private location: Location,
-    private route: ActivatedRoute) {
-      const course: Course = this.route.snapshot.data['course'];
+    private route: ActivatedRoute,
+    public formUtils: FormUtilsService) {
+  }
+
+  ngOnInit(): void{
+    const course: Course = this.route.snapshot.data['course'];
       this.form = this.formBuilder.group({
-        _id: [''],
-        name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-        category: ['', [Validators.required]]
-      })
-      this.form.setValue({
-        _id: course._id,
-        name: course.name,
-        category: course.category
+        _id: [course._id],
+        name: [course.name, [Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(100)]],
+        category: [course.category, [Validators.required]],
+        lessons: this.formBuilder.array(this.retrieveLessons(course),
+          Validators.required)
       });
   }
 
 
-  onSubmit(){
-    this.courseService.save(this.form.value).subscribe({
-      next: (result) => this.onSucess(),
-      error: () => {
-        this.onError();
-      },
+  private retrieveLessons(course: Course) {
+    const lessons = [];
+    if (course?.lessons){
+      course.lessons.forEach(lesson => lessons.push(this.createLesson(lesson)));
+    } else {
+      lessons.push(this.createLesson());
+    }
+    return lessons;
+
+  }
+
+  private createLesson(lesson: Lesson = {id: '', name: '', youtubeUrl: ''}) {
+    return this.formBuilder.group({
+      id: [lesson.id],
+      name: [lesson.name, [Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(100)]],
+      youtubeUrl: [lesson.youtubeUrl, [Validators.required,
+        Validators.maxLength(50)]]
     });
+  }
+
+  getLessonsFormArray(){
+    return (<UntypedFormArray>this.form.get('lessons')).controls;
+  }
+
+  addNewLesson(){
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.push(this.createLesson);
+  }
+
+  removeLesson(index: number){
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.removeAt(index);
+  }
+
+  onSubmit(){
+    if (this.form.valid){
+      this.courseService.save(this.form.value)
+    .subscribe({ next: (result) => this.onSucess(), error: () => this.onError() });
+    } else {
+      this.formUtils.validateAllFormFields(this.form);
+    }
+
   }
 
   onCancel(){
     this.location.back();
-  }
-
-  errorMessage(fieldName: string){
-    const field = this.form.get(fieldName);
-
-    if (field?.hasError('required')) {
-      return 'Campo obrigatório';
-    }
-
-    if (field?.hasError('minlength')) {
-      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
-      return `Tamanho mínimo precisa ser de ${requiredLength} caracteres`;
-    }
-
-    if (field?.hasError('maxlength')) {
-      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 100;
-      return `Tamanho máximo excedido de ${requiredLength} caracteres`;
-    }
-    return 'Campo Inválido';
-
   }
 
   private onSucess(){
