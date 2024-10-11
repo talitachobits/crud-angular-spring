@@ -26,7 +26,7 @@ export class CoursesService {
     return this.httpClient.get<Course>(`${this.API}/${id}`);
   }
 
-  save(record: Course) {
+  save(record: Partial<Course>) {
     if (record._id) {
       return this.update(record);
     }
@@ -38,11 +38,11 @@ export class CoursesService {
   }
 
 
-  private create(record: Course){
+  private create(record: Partial<Course>){
     return this.httpClient.post<Course>(this.API, record);
   }
 
-  private update(record: Course){
+  private update(record: Partial<Course>){
     return this.httpClient.put<Course>(`${this.API}/${record._id}`, record);
   }
 }

@@ -23,6 +23,7 @@
           }
       </mat-form-field>
 
+
       <mat-toolbar>
         <span>Aulas</span>
         <button mat-icon-button color="accent" (click)="addNewLesson()">
@@ -34,27 +35,29 @@
         <mat-error class="form-array-error">Adicione pelo menos uma aula</mat-error>
       }
 
-      <table style="width: 100%" formArrayName="lessons"
+      <table class="full-width" formArrayName="lessons"
       *ngFor="let lesson of getLessonsFormArray(); let i = index">
         <tr [formGroupName]="i">
           <td style="width: 65%">
             <mat-form-field  class="full-width">
               <mat-label>Nome da Aula</mat-label>
-              <input matInput placeholder="Nome" formControlName="name">
+              <input matInput formControlName="name">
               @if (getLessonsFormArray()[i].get('name')?.invalid) {
                 <mat-error>{{
-                  formUtils.getFormArrayFieldErrorMessage(form, 'lessons', 'name', i) }}</mat-error>
+                  formUtils.getFormArrayFieldErrorMessage(form, 'lessons', 'name', i) }}
+                </mat-error>
               }
             </mat-form-field>
           </td>
-          <td style="width: 30%">
+          <td style="width: 35%">
             <mat-form-field  class="full-width">
               <mat-label>URL</mat-label>
               <span matTextPrefix>https://youtu.be/</span>
-              <input matInput placeholder="Nome" formControlName="youtubeUrl">
+              <input matInput formControlName="youtubeUrl" />
               @if (getLessonsFormArray()[i].get('youtubeUrl')?.invalid) {
                 <mat-error>{{
-                  formUtils.getFormArrayFieldErrorMessage(form, 'lessons', 'youtubeUrl', i) }}</mat-error>
+                  formUtils.getFormArrayFieldErrorMessage(form, 'lessons', 'youtubeUrl', i) }}
+                </mat-error>
               }
             </mat-form-field>
           </td>
@@ -66,6 +69,7 @@
         </tr>
       </table>
 
+
     </form>
 
   </mat-card-content>
@@ -74,5 +78,6 @@
     <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
     <button mat-raised-button (click)="onCancel()">Cancelar</button>
   </mat-card-actions>
+
 
 </mat-card>
