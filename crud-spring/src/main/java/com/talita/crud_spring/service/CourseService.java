@@ -3,6 +3,7 @@ package com.talita.crud_spring.service;
 import com.talita.crud_spring.dto.CourseDTO;
 import com.talita.crud_spring.dto.mapper.CourseMapper;
 import com.talita.crud_spring.exception.RecordNotFoundException;
+import com.talita.crud_spring.model.Course;
 import com.talita.crud_spring.repository.CourseRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -40,11 +41,14 @@ public class CourseService {
         return courseMapper.toDTO(courseRepository.save(courseMapper.toEntity(course)));
     }
 
-    public CourseDTO update(@NotNull @Positive Long id,@Valid CourseDTO course){
+    public CourseDTO update(@NotNull @Positive Long id,@Valid CourseDTO courseDTO){
         return courseRepository.findById(id)
                 .map(recordFound -> {
-                    recordFound.setName(course.name());
-                    recordFound.setCategory(courseMapper.convertCategoryValue(course.category()));
+                    Course course = courseMapper.toEntity(courseDTO);
+                    recordFound.setName(courseDTO.name());
+                    recordFound.setCategory(courseMapper.convertCategoryValue(courseDTO.category()));
+                    recordFound.getLessons().clear();
+                    course.getLessons().forEach(recordFound.getLessons()::add);
                     return courseMapper.toDTO(courseRepository.save(recordFound));
                 }).orElseThrow(() -> new RecordNotFoundException(id));
     }

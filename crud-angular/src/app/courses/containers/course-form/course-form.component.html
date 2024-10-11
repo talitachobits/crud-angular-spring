@@ -6,7 +6,7 @@
       <mat-form-field  class="full-width">
         <mat-label>Nome do Curso</mat-label>
         <input matInput placeholder="Nome" formControlName="name" #name>
-        <mat-hint align="start">{{ name.value.length }} / 100</mat-hint>
+        <mat-hint>{{ name.value.length }} / 100</mat-hint>
         @if (form.get('name')?.invalid) {
           <mat-error>{{formUtils.getErrorMessage(form, 'name')}}</mat-error>
         }

@@ -35,8 +35,6 @@ export class CourseFormComponent implements OnInit {
       category: [course.category, [Validators.required]],
       lessons: this.formBuilder.array(this.retrieveLessons(course), Validators.required)
     });
-    console.log(this.form);
-    console.log(this.form.value);
   }
 
 
