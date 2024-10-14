@@ -1,4 +1,6 @@
 package com.talita.crud_spring.dto;
 
-public record CoursePageDTO() {
+import java.util.List;
+
+public record CoursePageDTO(List<CourseDTO> courses, long totalElements, int totalPages ) {
 }

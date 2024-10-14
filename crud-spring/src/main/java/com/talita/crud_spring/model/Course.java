@@ -6,7 +6,9 @@ import com.talita.crud_spring.enums.Status;
 import com.talita.crud_spring.enums.converts.CategoryConverter;
 import com.talita.crud_spring.enums.converts.StatusCoverter;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.SQLDelete;
@@ -27,7 +29,7 @@ public class Course {
 
     @NotBlank
     @NotNull
-    @Size(min=5, max=100)
+    @Size(min=4, max=100)
     @Column(length = 100, nullable = false)
     private String name;
 
@@ -41,6 +43,9 @@ public class Course {
     @Convert(converter = StatusCoverter.class)
     private Status status = Status.ACTIVE;
 
+    @NotNull
+    @NotEmpty
+    @Valid
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course")
     private List<Lesson> lessons = new ArrayList<>();
 

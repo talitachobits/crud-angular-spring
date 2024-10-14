@@ -30,7 +30,7 @@ export class FormUtilsService {
     }
 
     if (field?.hasError('minlength')) {
-      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 4;
       return `Tamanho mínimo precisa ser de ${requiredLength} caracteres`;
     }
 
