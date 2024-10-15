@@ -29,7 +29,6 @@ public class ValueOfEnumValidator implements ConstraintValidator<ValueOfEnum, Ch
                     .addConstraintViolation();
             return false;
         }
-
         return true;
     }
 }
