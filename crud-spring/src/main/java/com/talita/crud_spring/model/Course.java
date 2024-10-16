@@ -19,7 +19,7 @@ import java.util.List;
 
 @Entity
 @SQLRestriction("status <> 'Inativo'")
-@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")
+@SQLDelete(sql = "UPDATE course SET status = 'Inativo' WHERE id = ?")
 public class Course {
 
     @Id
