@@ -3,9 +3,9 @@ package com.talita.crud_spring.enums;
 public enum Status {
     ACTIVE("Ativo"), INACTIVE("Inativo");
 
-    private String value;
+    private final String value;
 
-    private Status(String value){
+    Status(String value){
         this.value = value;
 
     }
