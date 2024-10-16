@@ -1,6 +1,6 @@
-package com.talita.crud_spring.repository;
+package com.talita.crud_spring.repositories;
 
-import com.talita.crud_spring.model.Course;
+import com.talita.crud_spring.domain.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

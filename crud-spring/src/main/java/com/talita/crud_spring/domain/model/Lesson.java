@@ -1,4 +1,4 @@
-package com.talita.crud_spring.model;
+package com.talita.crud_spring.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

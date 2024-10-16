@@ -1,8 +1,8 @@
-package com.talita.crud_spring.controller;
+package com.talita.crud_spring.controllers;
 
-import com.talita.crud_spring.dto.CourseDTO;
-import com.talita.crud_spring.dto.CoursePageDTO;
-import com.talita.crud_spring.service.CourseService;
+import com.talita.crud_spring.domain.dto.CourseDTO;
+import com.talita.crud_spring.domain.dto.CoursePageDTO;
+import com.talita.crud_spring.services.CourseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -13,8 +13,6 @@ import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Validated
 @RestController

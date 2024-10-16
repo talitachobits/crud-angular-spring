@@ -1,11 +1,11 @@
-package com.talita.crud_spring.service;
+package com.talita.crud_spring.services;
 
-import com.talita.crud_spring.dto.CourseDTO;
-import com.talita.crud_spring.dto.CoursePageDTO;
-import com.talita.crud_spring.dto.mapper.CourseMapper;
+import com.talita.crud_spring.domain.dto.CourseDTO;
+import com.talita.crud_spring.domain.dto.CoursePageDTO;
+import com.talita.crud_spring.domain.dto.mapper.CourseMapper;
 import com.talita.crud_spring.exception.RecordNotFoundException;
-import com.talita.crud_spring.model.Course;
-import com.talita.crud_spring.repository.CourseRepository;
+import com.talita.crud_spring.domain.model.Course;
+import com.talita.crud_spring.repositories.CourseRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;

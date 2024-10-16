@@ -1,4 +1,4 @@
-package com.talita.crud_spring.controller;
+package com.talita.crud_spring.shared.controller;
 
 import com.talita.crud_spring.exception.RecordNotFoundException;
 import jakarta.validation.ConstraintViolationException;

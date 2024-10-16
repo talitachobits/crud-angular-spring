@@ -1,9 +1,9 @@
 package com.talita.crud_spring;
 
 import com.talita.crud_spring.enums.Category;
-import com.talita.crud_spring.model.Course;
-import com.talita.crud_spring.model.Lesson;
-import com.talita.crud_spring.repository.CourseRepository;
+import com.talita.crud_spring.domain.model.Course;
+import com.talita.crud_spring.domain.model.Lesson;
+import com.talita.crud_spring.repositories.CourseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.talita.crud_spring.dto;
+package com.talita.crud_spring.domain.dto;
 
 import java.util.List;
 

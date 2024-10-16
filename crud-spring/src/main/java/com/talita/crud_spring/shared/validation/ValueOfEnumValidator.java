@@ -1,4 +1,4 @@
-package com.talita.crud_spring.enums.validation;
+package com.talita.crud_spring.shared.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
