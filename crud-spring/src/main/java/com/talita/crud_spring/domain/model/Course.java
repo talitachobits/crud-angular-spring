@@ -14,8 +14,8 @@ import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @SQLRestriction("status <> 'Inativo'")
@@ -23,7 +23,7 @@ import java.util.List;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("_id")
     private Long id;
 
@@ -47,7 +47,7 @@ public class Course {
     @NotEmpty
     @Valid
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "course")
-    private List<Lesson> lessons = new ArrayList<>();
+    private Set<Lesson> lessons = new HashSet<>();
 
 
     public Category getCategory() {
@@ -82,11 +82,11 @@ public class Course {
         this.status = status;
     }
 
-    public List<Lesson> getLessons() {
+    public Set<Lesson> getLessons() {
         return lessons;
     }
 
-    public void setLessons(List<Lesson> lessons) {
+    public void setLessons(Set<Lesson> lessons) {
         this.lessons = lessons;
     }
 }
