@@ -6,6 +6,7 @@ import com.talita.crud_spring.domain.dto.mapper.CourseMapper;
 import com.talita.crud_spring.exception.RecordNotFoundException;
 import com.talita.crud_spring.domain.model.Course;
 import com.talita.crud_spring.repositories.CourseRepository;
+
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
@@ -67,6 +68,6 @@ public class CourseService {
     public void delete(@NotNull @Positive Long id){
         courseRepository.delete(courseRepository.findById(id)
                 .orElseThrow(() -> new RecordNotFoundException(id)));
-     }
+    }
 
 }

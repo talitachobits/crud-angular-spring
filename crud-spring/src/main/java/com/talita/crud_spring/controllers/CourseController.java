@@ -43,13 +43,13 @@ public class CourseController {
     @ResponseStatus( code = HttpStatus.CREATED)
     @Operation(summary = "Create a new course", description = "Create a new course and return the created course's data")
     public CourseDTO create(@RequestBody @Valid CourseDTO course){
-         return courseService.create(course);
+        return courseService.create(course);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update a course", description = "Update the data of an existing course based on its ID")
     public CourseDTO update(@PathVariable @NotNull @Positive Long id,
-                                         @RequestBody @Valid CourseDTO course){
+                            @RequestBody @Valid CourseDTO course){
 
         return courseService.update(id, course);
     }
