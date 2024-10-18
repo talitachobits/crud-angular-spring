@@ -1,4 +1,4 @@
-package com.talita.crud_spring.enums;
+package com.talita.crud_spring.domain.enums;
 
 public enum Status {
     ACTIVE("Ativo"), INACTIVE("Inativo");

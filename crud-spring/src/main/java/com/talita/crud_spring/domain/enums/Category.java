@@ -1,4 +1,4 @@
-package com.talita.crud_spring.enums;
+package com.talita.crud_spring.domain.enums;
 
 public enum Category {
     BACK_END("Back-end"), FRONT_END("Front-end");

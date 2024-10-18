@@ -24,7 +24,7 @@ export class CoursesComponent implements OnInit {
   @ViewChild(MatPaginator, {read: true}) paginator!: MatPaginator;
 
   pageIndex = 0;
-  pageSize = 5;
+  pageSize = 10;
 
   constructor(
     private coursesService: CoursesService,
@@ -46,7 +46,7 @@ export class CoursesComponent implements OnInit {
 
   }
 
-  refresh(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 5}){
+  refresh(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 10}){
     this.courses$ = this.coursesService.list(pageEvent.pageIndex, pageEvent.pageSize)
       .pipe(
         tap(() => {

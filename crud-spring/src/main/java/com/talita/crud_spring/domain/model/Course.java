@@ -1,10 +1,10 @@
 package com.talita.crud_spring.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.talita.crud_spring.enums.Category;
-import com.talita.crud_spring.enums.Status;
-import com.talita.crud_spring.enums.converts.CategoryConverter;
-import com.talita.crud_spring.enums.converts.StatusCoverter;
+import com.talita.crud_spring.domain.enums.Category;
+import com.talita.crud_spring.domain.enums.Status;
+import com.talita.crud_spring.domain.enums.converts.CategoryConverter;
+import com.talita.crud_spring.domain.enums.converts.StatusCoverter;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

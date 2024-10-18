@@ -2,7 +2,7 @@ package com.talita.crud_spring.domain.dto.mapper;
 
 import com.talita.crud_spring.domain.dto.CourseDTO;
 import com.talita.crud_spring.domain.dto.LessonDTO;
-import com.talita.crud_spring.enums.Category;
+import com.talita.crud_spring.domain.enums.Category;
 import com.talita.crud_spring.domain.model.Course;
 import com.talita.crud_spring.domain.model.Lesson;
 import org.springframework.stereotype.Component;

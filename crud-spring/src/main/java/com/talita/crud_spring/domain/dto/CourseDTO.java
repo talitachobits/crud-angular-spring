@@ -1,7 +1,7 @@
 package com.talita.crud_spring.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.talita.crud_spring.enums.Category;
+import com.talita.crud_spring.domain.enums.Category;
 import com.talita.crud_spring.shared.validation.ValueOfEnum;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

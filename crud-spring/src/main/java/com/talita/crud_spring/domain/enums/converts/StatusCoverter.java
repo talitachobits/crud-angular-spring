@@ -1,6 +1,6 @@
-package com.talita.crud_spring.enums.converts;
+package com.talita.crud_spring.domain.enums.converts;
 
-import com.talita.crud_spring.enums.Status;
+import com.talita.crud_spring.domain.enums.Status;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
