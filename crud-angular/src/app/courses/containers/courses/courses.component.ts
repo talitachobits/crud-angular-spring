@@ -12,9 +12,10 @@ import { CoursePage } from '../../model/course-page';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrl: './courses.component.scss'
+    selector: 'app-courses',
+    templateUrl: './courses.component.html',
+    styleUrl: './courses.component.scss',
+    standalone: false
 })
 export class CoursesComponent implements OnInit {
 

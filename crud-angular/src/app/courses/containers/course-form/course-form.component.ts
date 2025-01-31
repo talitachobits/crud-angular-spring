@@ -9,9 +9,10 @@ import { Course } from '../../model/course';
 import { FormUtilsService } from '../../../shared/form/form-utils.service';
 
 @Component({
-  selector: 'app-course-form',
-  templateUrl: './course-form.component.html',
-  styleUrl: './course-form.component.scss'
+    selector: 'app-course-form',
+    templateUrl: './course-form.component.html',
+    styleUrl: './course-form.component.scss',
+    standalone: false
 })
 export class CourseFormComponent implements OnInit {
 
